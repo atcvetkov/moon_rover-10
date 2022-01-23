@@ -12,7 +12,7 @@ basic.forever(function () {
                 basic.pause(10)
             }
             p0_state = 1
-        } else {
+        } else if (p0_state == 1 && p4_status == 1) {
             for (let index = 0; index <= 90; index++) {
                 pins.servoWritePin(AnalogPin.P0, 90 - index)
                 basic.pause(10)
@@ -21,7 +21,7 @@ basic.forever(function () {
         }
     }
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Number_2)) {
-        if (p4_status == 0) {
+        if (p4_status == 0 && p0_state == 0) {
             for (let index = 0; index <= 135; index++) {
                 pins.servoWritePin(AnalogPin.P4, index)
                 basic.pause(10)

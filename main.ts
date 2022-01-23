@@ -27,4 +27,5 @@ basic.forever(function () {
             p0p4_status = 0
         }
     }
+    basic.pause(100)
 })

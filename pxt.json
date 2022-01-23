@@ -6,7 +6,8 @@
         "radio": "*",
         "microphone": "*",
         "pxt-mecanum-robot": "github:keyestudio2019/mecanum_robot#v1.1.2",
-        "servo": "*"
+        "servo": "*",
+        "power": "github:microbit-foundation/pxt-microbit-v2-power#v0.2.3"
     },
     "files": [
         "main.blocks",

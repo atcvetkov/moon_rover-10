@@ -1,8 +1,6 @@
+let p0p4_status = 0
 led.enable(false)
 irRemote.connectInfrared(DigitalPin.P9)
-pins.servoWritePin(AnalogPin.P0, 90)
-pins.servoWritePin(AnalogPin.P4, 135)
-let p0p4_status = 0
 basic.forever(function () {
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Number_1)) {
         if (p0p4_status == 0) {
@@ -26,6 +24,33 @@ basic.forever(function () {
             }
             p0p4_status = 0
         }
+    }
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Up)) {
+        mecanumRobot.Motor(LR.Upper_right, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Upper_left, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Lower_right, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Lower_left, MD.Forward, 30)
+    }
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Down)) {
+        mecanumRobot.Motor(LR.Upper_right, MD.Back, 30)
+        mecanumRobot.Motor(LR.Upper_left, MD.Back, 30)
+        mecanumRobot.Motor(LR.Lower_right, MD.Back, 30)
+        mecanumRobot.Motor(LR.Lower_left, MD.Back, 30)
+    }
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Left)) {
+        mecanumRobot.Motor(LR.Upper_right, MD.Back, 30)
+        mecanumRobot.Motor(LR.Upper_left, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Lower_right, MD.Back, 30)
+        mecanumRobot.Motor(LR.Lower_left, MD.Forward, 30)
+    }
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Right)) {
+        mecanumRobot.Motor(LR.Upper_right, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Upper_left, MD.Back, 30)
+        mecanumRobot.Motor(LR.Lower_right, MD.Forward, 30)
+        mecanumRobot.Motor(LR.Lower_left, MD.Back, 30)
+    }
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Ok)) {
+        mecanumRobot.state(MotorState.stop)
     }
     basic.pause(100)
 })

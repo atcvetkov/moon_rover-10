@@ -4,16 +4,6 @@ let p0p4_status = 0
 pins.servoWritePin(AnalogPin.P0, 90)
 pins.servoWritePin(AnalogPin.P4, 135)
 basic.forever(function () {
-    for (let index = 0; index <= 135; index++) {
-        pins.servoWritePin(AnalogPin.P3, index)
-        basic.pause(30)
-    }
-    for (let index = 0; index <= 135; index++) {
-        pins.servoWritePin(AnalogPin.P3, 135 - index)
-        basic.pause(30)
-    }
-})
-basic.forever(function () {
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Number_1)) {
         if (p0p4_status == 0) {
             for (let index = 0; index <= 135; index++) {
@@ -65,4 +55,14 @@ basic.forever(function () {
         mecanumRobot.state(MotorState.stop)
     }
     basic.pause(100)
+})
+basic.forever(function () {
+    for (let index = 0; index <= 135; index++) {
+        pins.servoWritePin(AnalogPin.P3, index)
+        basic.pause(30)
+    }
+    for (let index = 0; index <= 135; index++) {
+        pins.servoWritePin(AnalogPin.P3, 135 - index)
+        basic.pause(30)
+    }
 })

@@ -15,6 +15,8 @@ basic.forever(function () {
 })
 basic.forever(function () {
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Number_1)) {
+        mecanumRobot.setLed(LedCount.Left, LedState.ON)
+        mecanumRobot.setLed(LedCount.Right, LedState.ON)
         if (p0p4_status == 0) {
             for (let index = 0; index <= 135; index++) {
                 pins.servoWritePin(AnalogPin.P4, 135 - index)
@@ -25,6 +27,8 @@ basic.forever(function () {
                 basic.pause(10)
             }
             p0p4_status = 1
+            mecanumRobot.setLed(LedCount.Left, LedState.OFF)
+            mecanumRobot.setLed(LedCount.Right, LedState.OFF)
         } else {
             for (let index3 = 0; index3 <= 90; index3++) {
                 pins.servoWritePin(AnalogPin.P0, index3)
@@ -34,34 +38,46 @@ basic.forever(function () {
                 pins.servoWritePin(AnalogPin.P4, index4)
                 basic.pause(10)
             }
+            mecanumRobot.setLed(LedCount.Left, LedState.OFF)
+            mecanumRobot.setLed(LedCount.Right, LedState.OFF)
             p0p4_status = 0
         }
     }
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Up)) {
+        mecanumRobot.setLed(LedCount.Right, LedState.OFF)
+        mecanumRobot.setLed(LedCount.Left, LedState.OFF)
         mecanumRobot.Motor(LR.Upper_right, MD.Forward, 30)
         mecanumRobot.Motor(LR.Upper_left, MD.Forward, 30)
         mecanumRobot.Motor(LR.Lower_right, MD.Forward, 30)
         mecanumRobot.Motor(LR.Lower_left, MD.Forward, 30)
     }
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Down)) {
+        mecanumRobot.setLed(LedCount.Left, LedState.OFF)
+        mecanumRobot.setLed(LedCount.Right, LedState.OFF)
         mecanumRobot.Motor(LR.Upper_right, MD.Back, 30)
         mecanumRobot.Motor(LR.Upper_left, MD.Back, 30)
         mecanumRobot.Motor(LR.Lower_right, MD.Back, 30)
         mecanumRobot.Motor(LR.Lower_left, MD.Back, 30)
     }
-    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Left)) {
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Right)) {
+        mecanumRobot.setLed(LedCount.Right, LedState.ON)
+        mecanumRobot.setLed(LedCount.Left, LedState.OFF)
         mecanumRobot.Motor(LR.Upper_right, MD.Back, 30)
         mecanumRobot.Motor(LR.Upper_left, MD.Forward, 30)
         mecanumRobot.Motor(LR.Lower_right, MD.Back, 30)
         mecanumRobot.Motor(LR.Lower_left, MD.Forward, 30)
     }
-    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Right)) {
+    if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Left)) {
+        mecanumRobot.setLed(LedCount.Left, LedState.ON)
+        mecanumRobot.setLed(LedCount.Right, LedState.OFF)
         mecanumRobot.Motor(LR.Upper_right, MD.Forward, 30)
         mecanumRobot.Motor(LR.Upper_left, MD.Back, 30)
         mecanumRobot.Motor(LR.Lower_right, MD.Forward, 30)
         mecanumRobot.Motor(LR.Lower_left, MD.Back, 30)
     }
     if (irRemote.returnIrButton() == irRemote.irButton(IrButton.Ok)) {
+        mecanumRobot.setLed(LedCount.Left, LedState.OFF)
+        mecanumRobot.setLed(LedCount.Right, LedState.OFF)
         mecanumRobot.state(MotorState.stop)
     }
 })
